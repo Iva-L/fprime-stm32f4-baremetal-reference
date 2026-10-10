@@ -1,12 +1,13 @@
-
 /**
  ******************************************************************************
- * @file    stm32h7_clock.h
- * @author  ivanlara
- * @brief   Clock initialization for STM32H7.
+ * @file    stm32f4_clock.h
+ * @brief   Clock initialization for STM32F4.
  ******************************************************************************
  */
-#include "stm32h7xx_hal.h"
+#ifndef STM32F4_CLOCK_H_
+#define STM32F4_CLOCK_H_
+
+#include "stm32f4xx_hal.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -18,3 +19,5 @@ void Error_Handler(void);
 #ifdef __cplusplus
 }
 #endif
+
+#endif /* STM32F4_CLOCK_H_ */

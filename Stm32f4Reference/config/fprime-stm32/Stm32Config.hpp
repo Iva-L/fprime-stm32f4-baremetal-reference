@@ -15,11 +15,11 @@
 #endif  // USART_ENABLED
 
 #ifndef USART1_UART_INSTANCE
-#define USART1_UART_INSTANCE (true) //!< Indicates whether the USART1 peripheral instance is enabled
+#define USART1_UART_INSTANCE (false) //!< Indicates whether the USART1 peripheral instance is enabled
 #endif  // USART1_UART_INSTANCE
 
 #ifndef USART2_UART_INSTANCE
-#define USART2_UART_INSTANCE (false) //!< Indicates whether the USART2 peripheral instance is enabled
+#define USART2_UART_INSTANCE (true) //!< Indicates whether the USART2 peripheral instance is enabled
 #endif  // USART2_UART_INSTANCE
 
 #ifndef USART3_UART_INSTANCE

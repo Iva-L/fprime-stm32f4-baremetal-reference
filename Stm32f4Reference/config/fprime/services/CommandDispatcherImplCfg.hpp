@@ -27,6 +27,8 @@ enum {
 namespace Svc {
 namespace CmdDispatcherCfg {
 
+constexpr bool EXECUTE_WHEN_SEQUENCE_TABLE_FULL_DEFAULT = false;
+
 //! Include command opcodes in events when true.
 //! When false, opcode fields are set to the maximum FwOpcodeType value.
 constexpr bool IncludeCommandOpcodesInEvents = true;

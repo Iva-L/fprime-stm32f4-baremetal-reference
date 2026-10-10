@@ -33,6 +33,11 @@ module ComCcsdsConfig {
         constant file   = 1
     }
 
+    module Aggregator {
+        constant aggregationSize = Svc.Ccsds.TmDataFieldSize
+        constant enablePacketSpanning = false
+    }
+
     module BuffMgr {
         constant frameAccumulatorSize = 1024
         constant commsBuffSize        = 256

@@ -5,6 +5,7 @@
 
 cmake_minimum_required(VERSION 3.24.2)
 project(Stm32f4Reference C CXX)
+enable_language(ASM)
 
 ###
 # F' Core Setup

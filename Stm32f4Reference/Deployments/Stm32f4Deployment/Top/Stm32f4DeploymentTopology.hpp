@@ -7,7 +7,7 @@
 #define STM32F4DEPLOYMENT_STM32F4DEPLOYMENTTOPOLOGY_HPP
 // Included for access to Stm32f4Deployment::TopologyState and Stm32f4Deployment::ConfigObjects::pingEntries. These definitions are required by the
 // autocoder, but are also used in this hand-coded topology.
-#include <Stm32f4Project/Deployments/Stm32f4Deployment/Top/Stm32f4DeploymentTopologyDefs.hpp>
+#include <Stm32f4Reference/Deployments/Stm32f4Deployment/Top/Stm32f4DeploymentTopologyDefs.hpp>
 
 namespace Deployments {
 /**

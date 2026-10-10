@@ -3,8 +3,8 @@
 // \brief Bare-metal cyclic executive entry point for the STM32 deployment.
 // ======================================================================
 // Used to access topology functions and component instances
-#include <Stm32f4Project/Deployments/Stm32f4Deployment/Top/Stm32f4DeploymentTopology.hpp>
-#include <Stm32f4Project/Deployments/Stm32f4Deployment/Top/Stm32f4DeploymentTopologyAc.hpp>
+#include <Stm32f4Reference/Deployments/Stm32f4Deployment/Top/Stm32f4DeploymentTopology.hpp>
+#include <Stm32f4Reference/Deployments/Stm32f4Deployment/Top/Stm32f4DeploymentTopologyAc.hpp>
 
 #include <fprime-stm32/Allocator/BootstrapAllocator.hpp>
 #include <Os/Os.hpp>

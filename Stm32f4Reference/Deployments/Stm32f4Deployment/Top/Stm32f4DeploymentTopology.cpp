@@ -4,9 +4,9 @@
 //
 // ======================================================================
 // Provides access to autocoded functions
-#include <Stm32f4Project/Deployments/Stm32f4Deployment/Top/Stm32f4DeploymentTopologyAc.hpp>
+#include <Stm32f4Reference/Deployments/Stm32f4Deployment/Top/Stm32f4DeploymentTopologyAc.hpp>
 // Note: Uncomment when using Svc:TlmPacketizer
-//#include <Stm32f4Project/Deployments/Stm32f4Deployment/Top/Stm32f4DeploymentPacketsAc.hpp>
+//#include <Stm32f4Reference/Deployments/Stm32f4Deployment/Top/Stm32f4DeploymentPacketsAc.hpp>
 
 // Necessary project-specified types
 #include <fprime-stm32/Allocator/BootstrapAllocator.hpp>
