@@ -35,8 +35,8 @@ constant FW_LOG_BUFFER_MAX_SIZE = FW_COM_BUFFER_MAX_SIZE - sizeof(FwEventIdType)
 @ Note: This constant truncates file names in assertion failure event reports
 constant FW_LOG_STRING_MAX_SIZE = 48
 
-@ Specifies the size of the buffer that contains the serialized telemetry value
-constant FW_TLM_BUFFER_MAX_SIZE = FW_COM_BUFFER_MAX_SIZE - sizeof(FwChanIdType) - sizeof(FwPacketDescriptorType)
+@ Maximum serialized telemetry value size for this deployment; 104 bytes covers the largest current channel value with margin.
+constant FW_TLM_BUFFER_MAX_SIZE = 104
 
 @ Specifies the size of the buffer that contains the serialized telemetry value
 constant FW_STATEMENT_ARG_BUFFER_MAX_SIZE = FW_CMD_ARG_BUFFER_MAX_SIZE

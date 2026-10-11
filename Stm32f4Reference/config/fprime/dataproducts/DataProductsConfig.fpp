@@ -10,11 +10,11 @@ module DataProductsConfig {
     }
 
     module StackSizes {
-        constant dpCat                = 64 * 1024
-        constant dpMgr                = 64 * 1024
-        constant dpWriter             = 64 * 1024
-        constant dpBufferAccumulator  = 64 * 1024
-        constant dpBufferManager      = 64 * 1024
+        constant dpCat                = 1024
+        constant dpMgr                = 1024
+        constant dpWriter             = 1024
+        constant dpBufferAccumulator  = 1024
+        constant dpBufferManager      = 1024
     }
 
     module Priorities {
@@ -34,12 +34,12 @@ module DataProductsConfig {
 
     module BufferAccumulator {
         constant allocatorId   = 301
-        constant maxNumBuffers = 4
+        constant maxNumBuffers = 2
     }
 
     module BuffMgr {
-        constant dpBufferStoreSize  = 2048
-        constant dpBufferStoreCount = 4
+        constant dpBufferStoreSize  = 1024
+        constant dpBufferStoreCount = 2
         constant dpBufferManagerId  = 300
     }
 

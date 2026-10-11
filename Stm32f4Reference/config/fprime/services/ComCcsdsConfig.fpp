@@ -2,13 +2,13 @@ module ComCcsdsConfig {
     constant BASE_ID = 0x02000000
 
     module QueueSizes {
-        constant comQueue    = 144
-        constant aggregator  = 8
+        constant comQueue    = 16
+        constant aggregator  = 4
     }
 
     module StackSizes {
-        constant comQueue   = 64 * 1024
-        constant aggregator = 64 * 1024
+        constant comQueue   = 1024
+        constant aggregator = 1024
     }
 
     module Priorities {
@@ -22,9 +22,9 @@ module ComCcsdsConfig {
     }
 
     module QueueDepths {
-        constant events = 16
-        constant tlm    = 16
-        constant file   = 8
+        constant events = 8
+        constant tlm    = 8
+        constant file   = 4
     }
 
     module QueuePriorities {
@@ -42,8 +42,8 @@ module ComCcsdsConfig {
         constant frameAccumulatorSize = 1024
         constant commsBuffSize        = 256
         constant commsFileBuffSize    = 512
-        constant commsBuffCount       = 8
-        constant commsFileBuffCount   = 4
+        constant commsBuffCount       = 4
+        constant commsFileBuffCount   = 2
         constant commsBuffMgrId       = 200
     }
 }
