@@ -103,7 +103,7 @@ extern "C" {
 // If disabled (default), allows the FATAL event handler to decide whether code should continue running after an
 // assertion trips.
 #ifndef FW_ASSERTIONS_ALWAYS_ABORT
-#define FW_ASSERTIONS_ALWAYS_ABORT 0
+#define FW_ASSERTIONS_ALWAYS_ABORT 1
 #endif
 
 // Adjust various configuration parameters in the architecture. Some of the above enables may disable some of the values

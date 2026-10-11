@@ -4,19 +4,19 @@
 # ======================================================================
 
 @ Number of rate group member output ports for ActiveRateGroup
-constant ActiveRateGroupOutputPorts = 10
+constant ActiveRateGroupOutputPorts = 6
 
 @ Number of rate group member output ports for PassiveRateGroup
 constant PassiveRateGroupOutputPorts = 10
 
 @ Used to drive rate groups
-constant RateGroupDriverRateGroupPorts = 3
+constant RateGroupDriverRateGroupPorts = 2
 
 @ Used for command and registration ports
 constant CmdDispatcherComponentCommandPorts = 30
 
 @ Used for uplink/sequencer buffer/response ports
-constant CmdDispatcherSequencePorts = 5
+constant CmdDispatcherSequencePorts = 1
 
 @ Used for dispatching sequences to command sequencers
 constant SeqDispatcherSequencerPorts = 2
@@ -28,7 +28,7 @@ constant CmdSplitterPorts = CmdDispatcherSequencePorts
 constant StaticMemoryAllocations = 4
 
 @ Used to ping active components
-constant HealthPingPorts = 25
+constant HealthPingPorts = 8
 
 @ Used for broadcasting completed file downlinks
 constant FileDownCompletePorts = 1

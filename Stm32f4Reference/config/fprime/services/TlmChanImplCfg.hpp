@@ -5,7 +5,7 @@
  * The framework default (TLMCHAN_HASH_BUCKETS = 500) is sized for large
  * multi-hundred-channel deployments and is the single largest static memory
  * consumer in this bare-metal image. The generated dictionary currently has
- * 99 telemetry channels across 19 producing components.
+ * 65 telemetry channels in the retained core deployment.
  *
  * Sized here to comfortably exceed the current channel count with headroom
  * for the planned USART1 DMA ground-link driver's telemetry, while freeing
@@ -26,12 +26,12 @@ enum {
     // (wider) channel ID type, kept at the framework default for parity.
     TLMCHAN_HASH_MOD_VALUE = 99,
 
-    // Must be >= number of telemetry channels in the system (99 today); four
-    // spare buckets preserve a small amount of growth without wasting SRAM.
-    TLMCHAN_HASH_BUCKETS = 104,
+    // Must be >= number of telemetry channels in the system (65 today); seven
+    // spare buckets preserve limited growth without wasting SRAM.
+    TLMCHAN_HASH_BUCKETS = 72,
 
     // At least the number of current channels, so no values are deferred.
-    TLMCHAN_MAX_ENTRIES_PER_RUN = 104,
+    TLMCHAN_MAX_ENTRIES_PER_RUN = 72,
 };
 
 }

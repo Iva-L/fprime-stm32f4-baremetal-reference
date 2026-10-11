@@ -2,7 +2,7 @@
  * \file
  * \brief Project override for Svc::CommandDispatcher table sizing
  *
- * Size the dispatch table to the deployment's current 48 command opcodes.
+ * Size the dispatch table to the core deployment's current 17 command opcodes.
  * Update this value when commands are added.
  */
 
@@ -12,8 +12,9 @@
 #include <Fw/FPrimeBasicTypes.hpp>
 
 enum {
-    // Must be >= number of opcodes registered in the topology (48 today).
-    CMD_DISPATCHER_DISPATCH_TABLE_SIZE = 48,  // !< The size of the table holding opcodes to dispatch
+    // Must be >= number of opcodes registered in the topology (17 today).
+    // Seven spare entries allow limited command growth.
+    CMD_DISPATCHER_DISPATCH_TABLE_SIZE = 24,  // !< The size of the table holding opcodes to dispatch
     // Number of commands that may be in-progress (awaiting a response)
     // simultaneously. Five sequence ports are configured; eight entries
     // allow limited overlap without the framework's larger default table.
