@@ -32,22 +32,11 @@ module Deployments {
     stack size Default.STACK_SIZE \
     priority 43
 
-  # 0.5Hz rate group (divisor 2 of 1Hz base clock)
-  instance rateGroup_0_5Hz: Svc.ActiveRateGroup base id 0x10002000 \
-    queue size Default.QUEUE_SIZE \
-    stack size Default.STACK_SIZE \
-    priority 42
-
   # 0.25Hz rate group (divisor 4 of 1Hz base clock)
   instance rateGroup_0_25Hz: Svc.ActiveRateGroup base id 0x10003000 \
     queue size Default.QUEUE_SIZE \
     stack size Default.STACK_SIZE \
     priority 41
-
-  instance cmdSeq: Svc.CmdSequencer base id 0x10004000 \
-    queue size Default.QUEUE_SIZE \
-    stack size Default.STACK_SIZE \
-    priority 40
 
   # ----------------------------------------------------------------------
   # Queued component instances
@@ -61,8 +50,6 @@ module Deployments {
   instance osTime: Svc.OsTime base id 0x10010000
 
   instance rateGroupDriver: Svc.RateGroupDriver base id 0x10011000
-
-  instance systemResources: Svc.SystemResources base id 0x10012000
 
   instance timer: Stm32.STM32Timer base id 0x10013000
 

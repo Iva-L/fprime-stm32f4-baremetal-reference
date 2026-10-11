@@ -21,7 +21,6 @@ register_fprime_module(
     DEPENDS
         Fw_Logger
         FprimeStm32Allocator
-        Os_Baremetal_MicroFs
 )
 
 target_include_directories(Stm32f4Deployment_Top PUBLIC

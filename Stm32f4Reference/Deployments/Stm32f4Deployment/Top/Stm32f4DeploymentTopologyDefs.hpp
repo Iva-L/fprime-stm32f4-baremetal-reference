@@ -6,17 +6,15 @@
 #ifndef STM32F4DEPLOYMENT_STM32F4DEPLOYMENTTOPOLOGYDEFS_HPP
 #define STM32F4DEPLOYMENT_STM32F4DEPLOYMENTTOPOLOGYDEFS_HPP
 
+#include <cstring>
+
 // Subtopology PingEntries includes
 #include "Svc/Subtopologies/CdhCore/PingEntries.hpp"
 #include "Svc/Subtopologies/ComCcsds/PingEntries.hpp"
-#include "Svc/Subtopologies/DataProducts/PingEntries.hpp"
-#include "Svc/Subtopologies/FileHandling/PingEntries.hpp"
 
 // SubtopologyTopologyDefs includes
 #include "Svc/Subtopologies/CdhCore/SubtopologyTopologyDefs.hpp"
 #include "Svc/Subtopologies/ComCcsds/SubtopologyTopologyDefs.hpp"
-#include "Svc/Subtopologies/DataProducts/SubtopologyTopologyDefs.hpp"
-#include "Svc/Subtopologies/FileHandling/SubtopologyTopologyDefs.hpp"
 
 //ComCcsds Enum Includes
 #include "Svc/Subtopologies/ComCcsds/Ports_ComPacketQueueEnumAc.hpp"
@@ -46,28 +44,18 @@
  */
 namespace PingEntries {
     namespace Deployments_rateGroup_1Hz {enum { WARN = 3, FATAL = 5 };}
-    namespace Deployments_rateGroup_0_5Hz {enum { WARN = 3, FATAL = 5 };}
     namespace Deployments_rateGroup_0_25Hz {enum { WARN = 3, FATAL = 5 };}
-    namespace Deployments_cmdSeq {enum { WARN = 3, FATAL = 5 };}
 }  // namespace PingEntries
 
 // Definitions are placed within the same namespace as the FPP module that contains the topology.
 namespace Deployments {
 
 /**
- * \brief required type definition to carry state
- *
- * The topology autocoder requires an object that carries state with the name `Deployments::TopologyState`. Only the type
- * definition is required by the autocoder and the contents of this object are otherwise opaque to the autocoder. The
- * contents are entirely up to the definition of the project. This deployment uses subtopologies.
+ * \brief State required by the retained CdhCore and ComCcsds subtopologies.
  */
 struct TopologyState {
-    const char* uartDevice; //!< UART device path for communication
-    U32 baudRate;          //!< Baud rate for UART communication
-    CdhCore::SubtopologyState cdhCore;           //!< Subtopology state for CdhCore
-    ComCcsds::SubtopologyState comCcsds;         //!< Subtopology state for ComCcsds 
-    DataProducts::SubtopologyState dataProducts; //!< Subtopology state for DataProducts
-    FileHandling::SubtopologyState fileHandling; //!< Subtopology state for FileHandling
+    CdhCore::SubtopologyState cdhCore;
+    ComCcsds::SubtopologyState comCcsds;
 };
 
 namespace PingEntries = ::PingEntries;

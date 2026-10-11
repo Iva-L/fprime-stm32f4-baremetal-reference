@@ -9,8 +9,6 @@
 //#include <Stm32f4Reference/Deployments/Stm32f4Deployment/Top/Stm32f4DeploymentPacketsAc.hpp>
 
 // Necessary project-specified types
-#include <fprime-stm32/Allocator/BootstrapAllocator.hpp>
-#include <fprime-baremetal/Os/Baremetal/MicroFs/MicroFs.hpp>
 #include <config/UartDriverConfig.hpp>
 #include <Fw/Logger/Logger.hpp>
 
@@ -21,12 +19,11 @@
 // This is also the namespace where the topology components are instantiated by FPP.
 namespace Deployments {
 
-Svc::RateGroupDriver::DividerSet rateGroupDivisorsSet{{{100, 0}, {200, 0}, {400, 0}}};
-// Divisors: 1Hz, 0.5Hz, 0.25Hz
+Svc::RateGroupDriver::DividerSet rateGroupDivisorsSet{{{100, 0}, {400, 0}}};
+// Divisors: 1Hz and 0.25Hz
 
 // Context tokens for rate group members (unused, set to zero)
 Svc::ActiveRateGroup::ContextArray rateGroup_1HzContext(0);
-Svc::ActiveRateGroup::ContextArray rateGroup_0_5HzContext(0);
 Svc::ActiveRateGroup::ContextArray rateGroup_0_25HzContext(0);
 
 enum TopologyConstants {
@@ -44,13 +41,6 @@ enum TopologyConstants {
  * desired, but is extracted here for clarity.
  */
 void configureTopology() {
-    // Bare-metal MicroFs (RAM-backed) filesystem initialization
-    static Os::Baremetal::MicroFs::MicroFsConfig microFsConfig;
-    Os::Baremetal::MicroFs::MicroFsSetCfgBins(microFsConfig, 2);
-    Os::Baremetal::MicroFs::MicroFsAddBin(microFsConfig, 0, 1024, 2);
-    Os::Baremetal::MicroFs::MicroFsAddBin(microFsConfig, 1, 4096, 1);
-    Os::Baremetal::MicroFs::MicroFsInit(microFsConfig, 0, Stm32::getBootstrapAllocator());
-
     // Rate group driver needs a divisor list
     rateGroupDriver.configure(rateGroupDivisorsSet);
 
@@ -59,14 +49,7 @@ void configureTopology() {
 
     // Rate groups require context arrays.
     rateGroup_1Hz.configure(rateGroup_1HzContext);
-    rateGroup_0_5Hz.configure(rateGroup_0_5HzContext);
     rateGroup_0_25Hz.configure(rateGroup_0_25HzContext);
-
-    // Command sequencer needs to allocate memory to hold contents of command sequences
-    cmdSeq.allocateBuffer(0, Stm32::getBootstrapAllocator(), 5 * 1024);
-
-    // PrmDb file name must be supplied by the using topology
-    FileHandling::prmDb.configure("PrmDb.dat");
 
     // Open the UART driver using the USART1 instance and the specified interrupt priorities and baud rate.
     const Fw::Success comDriverOpened = comDriver.open(FW_COM_BUFFER_MAX_SIZE, Stm32::UsartInstance::Usart2,
@@ -113,9 +96,6 @@ void teardownTopology(const TopologyState& state) {
     // Autocoded (active component) task clean-up. Functions provided by topology autocoder.
     stopTasks(state);
     freeThreads(state);
-
-    // Resource deallocation
-    cmdSeq.deallocateBuffer(Stm32::getBootstrapAllocator());
 
     tearDownComponents(state);
     deinitComponents(state);
