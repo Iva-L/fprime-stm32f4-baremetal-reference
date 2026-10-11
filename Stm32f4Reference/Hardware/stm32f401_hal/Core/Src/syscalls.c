@@ -67,6 +67,12 @@ void _exit (int status)
 __attribute__((weak)) int _read(int file, char *ptr, int len)
 {
   (void)file;
+  if (__io_getchar == NULL)
+  {
+    errno = ENOSYS;
+    return -1;
+  }
+
   int DataIdx;
 
   for (DataIdx = 0; DataIdx < len; DataIdx++)
@@ -80,6 +86,12 @@ __attribute__((weak)) int _read(int file, char *ptr, int len)
 __attribute__((weak)) int _write(int file, char *ptr, int len)
 {
   (void)file;
+  if (__io_putchar == NULL)
+  {
+    errno = ENOSYS;
+    return -1;
+  }
+
   int DataIdx;
 
   for (DataIdx = 0; DataIdx < len; DataIdx++)

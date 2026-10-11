@@ -26,7 +26,7 @@
     
   .syntax unified
   .cpu cortex-m4
-  .fpu softvfp
+  .fpu fpv4-sp-d16
   .thumb
 
 .global  g_pfnVectors
@@ -94,11 +94,15 @@ LoopFillZerobss:
   cmp r2, r4
   bcc FillZerobss
  
+/* Register the fixed allocator before C++ constructors can allocate. */
+  bl Stm32_registerBootstrapAllocator
+
 /* Call static constructors */
     bl __libc_init_array
 /* Call the application's entry point.*/
   bl  main
-  bx  lr    
+LoopForever:
+  b LoopForever
 .size  Reset_Handler, .-Reset_Handler
 
 /**
